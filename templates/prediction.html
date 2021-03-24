@@ -1,0 +1,119 @@
+{%  load static %}
+<html xmlns="http://www.w3.org/1999/html">
+{%  block content %}
+<head>
+<style>
+body
+{
+   margin:0;
+   padding:0;
+   background-image:url({% static 'images/6.jpg' %});background-size:cover;
+}
+.box
+{
+   position:absolute;
+   top:60%;
+   left:50%;
+   transform:translate(-50%,-50%);
+   width:400px;
+   padding:40px;
+   background:rgba(20,42,10,200);
+   box-sizing:border-box;
+   box-shadow:0 10px 25px rgba(0,0,0,.5);
+   border-radius:50px;
+}
+.box h1
+{
+     margin:0 0 30px;
+     padding:0;
+     color:#fff;
+     text-align:left;
+}
+.box .inputbox
+{
+   position:relative;
+}
+.box .inputbox input
+{
+   width:100%;
+   padding:10px 0;
+   font-size:16px;
+   color:#fff;
+   margin-bottom:30px;
+   border:none;
+   border-bottom:1px solid #fff;
+   outline:none;
+   background:transparent;
+}
+.box .inputbox label
+{
+   position:absolute;
+   top:0;
+   left:0;
+   padding:10px 0;
+   font-size:16px;
+   color:#fff;
+   pointer-events:none;
+   transition:.5s;
+}
+.box .inputbox input:focus ~ label,
+.box .inputbox input:valid ~ label
+{
+  top:-18px;
+  left:0;
+  color:#03a9f4;
+  font-size:12px;
+}
+.box input[type="submit"]
+{
+  background:transparent;
+  border:none;
+  outline:none;
+  color:#fff;
+  background:#03a9f4;
+  padding:10px 20px;
+  cursor:pointer;
+  border-radius:5px;
+}
+h1
+{
+     margin:0 0 30px;
+     padding:0;
+     color:brown;
+     text-align:center;
+}
+
+</style>
+</head>
+<body>
+<div>
+<h1>Advanced and Effective Application for Farmers to Predict Yield of Crop</h1></br>
+</div><br><br>
+<div class="box">
+<form   action="predict_crop"  method="POST">
+{% csrf_token %}
+<div class="inputbox">
+<input type="text" name="area"  required="">
+<label>Area</label>
+</div>
+<div class="inputbox">
+<input type="text" name="ha_yield" required="">
+<label>Hg/Ha Yield</label>
+</div>
+<div class="inputbox">
+<input type="text" name="avg_rainfall_mm"  required="">
+<label>Average Rain Fall in mm</label>
+</div>
+<div class="inputbox">
+<input type="text" name="pesticides_tonnes"   required="">
+<label>Pesticides</label>
+</div>
+<div class="inputbox">
+<input type="text" name="avg_tem"  required="">
+<label>Average Temperature</label>
+</div>
+<input type="submit" value="submit" name="">
+</form>
+{% endblock  %}
+</body>
+</html>
